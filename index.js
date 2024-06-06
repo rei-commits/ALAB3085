@@ -46,3 +46,45 @@ console.log(
 console.log("Numbers from 1 to", n, "using recursion:");
 printNumbers(n);
 
+//part 2
+const data = [
+    { id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+    { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+    { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+    { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+    { id: "7", name: "Bilbo", occupation: "None", age: "111" },
+];
+
+// Sort the array by age
+const sortedByAge = data.sort((a, b) => Number(a.age) - Number(b.age));
+console.log("Sorted by age:", sortedByAge);
+
+// Filter the array to remove entries with an age greater than 50
+const filteredByAge = data.filter((person) => Number(person.age) <= 50);
+console.log("Filtered by age (less than or equal to 50):", filteredByAge);
+
+// Map the array to change the “occupation” key to “job” and increment every age by 1
+const mappedData = data.map((person) => ({
+    ...person,
+    job: person.occupation,
+    age: Number(person.age) + 1,
+}));
+console.log(
+    "Mapped data (occupation to job, age incremented by 1):",
+    mappedData
+);
+
+// Use the reduce method to calculate the sum of the ages
+const sumOfAges = data.reduce((acc, person) => acc + Number(person.age), 0);
+console.log("Sum of ages:", sumOfAges);
+
+// Calculate the average age
+const averageAge = sumOfAges / data.length;
+console.log("Average age:", averageAge);
+
+// Function to increment the age field of an object
+function incrementAge(obj) {
+    if (!obj.age) obj.age = 0;
+    obj.age++;
+    obj.updated_at = new Date();
+}
